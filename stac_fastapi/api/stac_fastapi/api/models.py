@@ -130,6 +130,15 @@ class ItemCollectionUri(CollectionUri):
     datetime: Optional[DateTimeType] = attr.ib(default=None)
 
 
+@attr.s
+class BaseCollectionSearchGetRequest(APIRequest):
+    """Base arguments for GET Collection Search Request."""
+
+    bbox: Optional[str] = attr.ib(default=None, converter=str2bbox)
+    #intersects: Optional[str] = attr.ib(default=None)
+    datetime: Optional[str] = attr.ib(default=None)
+    limit: Optional[int] = attr.ib(default=10)
+
 class POSTTokenPagination(BaseModel):
     """Token pagination model for POST requests."""
 

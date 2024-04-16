@@ -801,3 +801,58 @@ class BaseFiltersClient(abc.ABC):
             "description": "Queryable names for the example STAC API Item Search filter.",
             "properties": {},
         }
+    
+@attr.s
+class AsyncCollectionSearchClient(abc.ABC):
+    """Defines a pattern for implementing the STAC Collection Search extension."""
+
+    async def get_collection_search(
+        self,
+        bbox: Optional[List[NumType]] = None,
+        intersects: Optional[str] = None,
+        datetime: Optional[Union[str, DateTimeType]] = None,
+        limit: Optional[int] = 10,
+        **kwargs,
+    ) -> stac_types.ItemCollection:
+        """Cross catalog search (GET) for collections.
+
+        Called with `GET /collection-search`.
+
+        Args:
+            search_request: search request parameters.
+
+        Returns:
+            A list of collections matching search criteria.
+        """
+        # return {
+        #     "returned": "search results (a collection of collections)"
+        # }
+        None
+
+
+@attr.s
+class CollectionSearchClient(abc.ABC):
+    """Defines a pattern for implementing the STAC Collection Search extension."""
+
+    async def get_collection_search(
+        self,
+        bbox: Optional[List[NumType]] = None,
+        intersects: Optional[str] = None,
+        datetime: Optional[Union[str, DateTimeType]] = None,
+        limit: Optional[int] = 10,
+        **kwargs,
+    ) -> stac_types.ItemCollection:
+        """Cross catalog search (GET) for collections.
+
+        Called with `GET /collection-search`.
+
+        Args:
+            search_request: search request parameters.
+
+        Returns:
+            A list of collections matching search criteria.
+        """
+        # return {
+        #     "returned": "search results (a collection of collections)"
+        # }
+        None
