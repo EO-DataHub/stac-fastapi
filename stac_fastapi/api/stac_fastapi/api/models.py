@@ -155,6 +155,13 @@ class GETPagination(APIRequest):
 
     page: Optional[str] = attr.ib(default=None)
 
+@attr.s
+class BaseCollectionSearchGetRequest(APIRequest):
+    """Base arguments for GET Collection Search Request."""
+
+    bbox: Optional[BBox] = attr.ib(default=None, converter=str2bbox)
+    datetime: Optional[DateTimeType] = attr.ib(default=None)
+    limit: Optional[int] = attr.ib(default=10)
 
 # Test for ORJSON and use it rather than stdlib JSON where supported
 if importlib.util.find_spec("orjson") is not None:
