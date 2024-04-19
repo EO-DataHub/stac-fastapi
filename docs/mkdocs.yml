@@ -6,8 +6,8 @@ repo_name: "stac-utils/stac-fastapi"
 repo_url: "https://github.com/stac-utils/stac-fastapi"
 edit_uri: "blob/main/docs/src/"
 
-docs_dir: 'src'
-site_dir: 'build'
+docs_dir: "src"
+site_dir: "build"
 
 # Social links
 extra:
@@ -58,6 +58,10 @@ nav:
                   - pagination: api/stac_fastapi/extensions/core/pagination/pagination.md
                   - token_pagination: api/stac_fastapi/extensions/core/pagination/token_pagination.md
               - version: api/stac_fastapi/extensions/version.md
+              - collection_search:
+                  - module: api/stac_fastapi/extensions/core/collectionSearch/index.md
+                  - collectionSearch: api/stac_fastapi/extensions/core/collectionSearch/collectionSearch.md
+                  - request: api/stac_fastapi/extensions/core/collectionSearch/request.md
           - third_party:
               - bulk_transactions: api/stac_fastapi/extensions/third_party/bulk_transactions.md
               - index: api/stac_fastapi/extensions/third_party/index.md
