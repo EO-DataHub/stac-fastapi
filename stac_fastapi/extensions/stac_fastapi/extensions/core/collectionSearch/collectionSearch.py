@@ -1,5 +1,5 @@
 # encoding: utf-8
-"""Filter Extension."""
+"""Collection Search Extension."""
 from enum import Enum
 from typing import List, Type, Union
 
@@ -13,11 +13,10 @@ from stac_fastapi.api.routes import create_async_endpoint
 from stac_fastapi.types.core import AsyncCollectionSearchClient, CollectionSearchClient
 from stac_fastapi.types.extension import ApiExtension
 from stac_fastapi.types.search import BaseCollectionSearchGetRequest, BaseCollectionSearchPostRequest
-from stac_fastapi.types.config import ApiSettings
 
-from ..collectionSearch.request import CollectionSearchExtensionGetRequest, CollectionSearchExtensionPostRequest
+from .request import CollectionSearchExtensionGetRequest, CollectionSearchExtensionPostRequest
 
-class FilterConformanceClasses(str, Enum):
+class CollectionSearchConformanceClasses(str, Enum):
     """Conformance classes for the Filter extension.
 
     See
@@ -61,9 +60,9 @@ class CollectionSearchExtension(ApiExtension):
     
     conformance_classes: List[str] = attr.ib(
         default=[
-            FilterConformanceClasses.CORE,
-            FilterConformanceClasses.COLLECTION_SEARCH,
-            FilterConformanceClasses.SIMPLE_QUERY,
+            CollectionSearchConformanceClasses.CORE,
+            CollectionSearchConformanceClasses.COLLECTION_SEARCH,
+            CollectionSearchConformanceClasses.SIMPLE_QUERY,
         ]
     )
     router: APIRouter = attr.ib(factory=APIRouter)
@@ -92,7 +91,7 @@ class CollectionSearchExtension(ApiExtension):
         self.router.add_api_route(
             name="Collection Search",
             path="/collection-search",
-            response_model=(Collection),
+            response_model=Collection,
             response_class=GeoJSONResponse,
             response_model_exclude_unset=True,
             response_model_exclude_none=True,
