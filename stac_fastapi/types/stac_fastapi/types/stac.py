@@ -90,3 +90,4 @@ class Collections(TypedDict, total=False):
 
     collections: List[Collection]
     links: List[Dict[str, Any]]
+    context: Optional[Dict[str, int]]
