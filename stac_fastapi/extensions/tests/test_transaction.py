@@ -29,6 +29,12 @@ class DummyCoreClient(BaseCoreClient):
 
     def item_collection(self, *args, **kwargs):
         raise NotImplementedError
+    
+    def get_collection_search(self, *args, **kwargs):
+        raise NotImplementedError
+
+    def post_collection_search(self, *args, **kwargs):
+        raise NotImplementedError
 
 
 class DummyTransactionsClient(BaseTransactionsClient):
