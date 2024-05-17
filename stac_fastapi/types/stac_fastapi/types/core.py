@@ -17,7 +17,10 @@ from stac_fastapi.types.conformance import BASE_CONFORMANCE_CLASSES
 from stac_fastapi.types.extension import ApiExtension
 from stac_fastapi.types.requests import get_base_url
 from stac_fastapi.types.rfc3339 import DateTimeType
-from stac_fastapi.types.search import BaseSearchPostRequest, BaseCollectionSearchPostRequest
+from stac_fastapi.types.search import (
+    BaseCollectionSearchPostRequest,
+    BaseSearchPostRequest,
+)
 from stac_fastapi.types.stac import Conformance
 
 NumType = Union[float, int]
@@ -801,9 +804,10 @@ class BaseFiltersClient(abc.ABC):
             "description": "Queryable names for the example STAC API Item Search filter.",
             "properties": {},
         }
-    
+
+
 @attr.s
-class AsyncCollectionSearchClient(abc.ABC):
+class AsyncBaseCollectionSearchClient(abc.ABC):
     """Defines a pattern for implementing the STAC Collection Search extension."""
 
     @abc.abstractmethod
@@ -841,7 +845,7 @@ class AsyncCollectionSearchClient(abc.ABC):
 
 
 @attr.s
-class CollectionSearchClient(abc.ABC):
+class BaseCollectionSearchClient(abc.ABC):
     """Defines a pattern for implementing the STAC Collection Search extension."""
 
     @abc.abstractmethod
