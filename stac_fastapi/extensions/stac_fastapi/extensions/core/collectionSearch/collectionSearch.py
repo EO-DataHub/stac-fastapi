@@ -32,7 +32,8 @@ class CollectionSearchExtension(ApiExtension):
     """CollectionSearch Extension.
 
     The collection search extension adds two endpoints which allow searching of 
-    collections via GET and POST:
+    collections via GET and POST, to avoid conflict with /collections endpoints 
+    those used here are:
         GET /collection-search
         POST /collection-search
 
