@@ -1064,6 +1064,7 @@ class AsyncBaseCollectionSearchClient(abc.ABC):
         datetime: Optional[Union[str, DateTimeType]] = None,
         limit: Optional[int] = 10,
         q: Optional[List[str]] = None,
+        glob: Optional[bool] = False,
         **kwargs,
     ) -> stac_types.Collections:
         """Get all available collections.
@@ -1095,6 +1096,7 @@ class BaseCollectionSearchClient(abc.ABC):
         datetime: Optional[Union[str, DateTimeType]] = None,
         limit: Optional[int] = 10,
         q: Optional[List[str]] = None,
+        glob: Optional[bool] = False,
         **kwargs,
     ) -> stac_types.Collections:
         """Get all available collections.
