@@ -19,7 +19,7 @@ from stac_fastapi.types.search import (
     BaseCollectionSearchGetRequest,
     BaseCollectionSearchPostRequest,
     CollectionSearchPostRequest,
-    CollectionSearchGetRequest
+    CollectionSearchGetRequest,
 )
 
 from .request import (
@@ -66,15 +66,15 @@ class CollectionSearchExtension(ApiExtension):
     GET = CollectionSearchExtensionGetRequest
     POST = CollectionSearchExtensionPostRequest
 
-    global_collections_post_request_model: Type[BaseCollectionSearchPostRequest] = attr.ib(
-        default=BaseCollectionSearchPostRequest
+    global_collections_post_request_model: Type[BaseCollectionSearchPostRequest] = (
+        attr.ib(default=BaseCollectionSearchPostRequest)
     )
     collections_post_request_model: Type[CollectionSearchPostRequest] = attr.ib(
         default=CollectionSearchPostRequest
     )
 
-    global_collections_get_request_model: Type[BaseCollectionSearchGetRequest] = attr.ib(
-        default=BaseCollectionSearchGetRequest
+    global_collections_get_request_model: Type[BaseCollectionSearchGetRequest] = (
+        attr.ib(default=BaseCollectionSearchGetRequest)
     )
     collections_get_request_model: Type[CollectionSearchGetRequest] = attr.ib(
         default=CollectionSearchGetRequest
@@ -116,7 +116,8 @@ class CollectionSearchExtension(ApiExtension):
             response_model_exclude_none=True,
             methods=["POST"],
             endpoint=create_async_endpoint(
-                self.client.post_all_collections, self.global_collections_post_request_model
+                self.client.post_all_collections,
+                self.global_collections_post_request_model,
             ),
         )
 
@@ -146,7 +147,8 @@ class CollectionSearchExtension(ApiExtension):
             response_model_exclude_none=True,
             methods=["GET"],
             endpoint=create_async_endpoint(
-                self.client.get_all_collections, self.global_collections_get_request_model
+                self.client.get_all_collections,
+                self.global_collections_get_request_model,
             ),
         )
 

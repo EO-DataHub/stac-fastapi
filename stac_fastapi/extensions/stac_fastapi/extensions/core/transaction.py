@@ -70,17 +70,20 @@ class PutItem(ItemUri):
     workspace: str = attr.ib(default=None)
     is_public: bool = attr.ib(default=False)
 
+
 @attr.s  # type:ignore
 class DeleteItemUri(ItemUri):
     """Delete item."""
 
     workspace: str = attr.ib(default=None)
 
+
 @attr.s  # type:ignore
 class DeleteCollectionUri(CollectionUri):
     """Delete collection."""
 
     workspace: str = attr.ib(default=None)
+
 
 @attr.s  # type:ignore
 class DeleteCatalogUri(CatalogUri):
