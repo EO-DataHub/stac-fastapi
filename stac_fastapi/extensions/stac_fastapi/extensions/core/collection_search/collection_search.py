@@ -18,8 +18,8 @@ from stac_fastapi.types.extension import ApiExtension
 from stac_fastapi.types.search import (
     BaseCollectionSearchGetRequest,
     BaseCollectionSearchPostRequest,
-    CollectionSearchPostRequest,
     CollectionSearchGetRequest,
+    CollectionSearchPostRequest,
 )
 
 from .request import (
