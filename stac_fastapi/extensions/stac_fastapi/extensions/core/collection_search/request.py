@@ -42,7 +42,6 @@ class CollectionSearchExtensionPostRequest(BaseModel):
     q: Optional[List[str]]
     filter: Optional[str] = attr.ib(default=None)
     filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
-    filter_lang: Optional[FilterLang] = Field(alias="filter-lang", default="cql2-text")
 
 
 class CollectionSearchExtensionPostRequestExt(CollectionSearchExtensionPostRequest):
