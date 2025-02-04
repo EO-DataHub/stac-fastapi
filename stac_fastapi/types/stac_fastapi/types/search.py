@@ -30,6 +30,7 @@ from stac_pydantic.shared import BBox
 from stac_pydantic.utils import AutoValueEnum
 
 from stac_fastapi.types.rfc3339 import DateTimeType, str_to_interval
+from stac_fastapi.types.search.filter import FilterLang
 
 # Be careful: https://github.com/samuelcolvin/pydantic/issues/1423#issuecomment-642797287
 NumType = Union[float, int]
@@ -354,6 +355,9 @@ class BaseCollectionSearchGetRequest(APIRequest):
     datetime: Optional[DateTimeType] = attr.ib(default=None, converter=str_to_interval)
     limit: Optional[int] = attr.ib(default=10)
     q: Optional[List[str]] = attr.ib(default=None, converter=str2list)
+    filter: Optional[str] = attr.ib(default=None)
+    filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
+    filter_lang: Optional[FilterLang] = Field(alias="filter-lang", default="cql2-text")
 
 
 @attr.s
@@ -377,6 +381,9 @@ class BaseCollectionSearchPostRequest(Search):
     datetime: Optional[DateTimeType]
     limit: Optional[Limit] = 10
     q: Optional[List[str]]
+    filter: Optional[str] = attr.ib(default=None)
+    filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
+    filter_lang: Optional[FilterLang] = Field(alias="filter-lang", default="cql2-text")
 
     @validator("bbox", pre=True)
     def validate_bbox(cls, v: Union[str, BBox]) -> BBox:
