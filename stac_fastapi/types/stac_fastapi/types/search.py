@@ -30,7 +30,7 @@ from stac_pydantic.shared import BBox
 from stac_pydantic.utils import AutoValueEnum
 
 from stac_fastapi.types.rfc3339 import DateTimeType, str_to_interval
-from stac_fastapi.types.search.filter import FilterLang
+from stac_fastapi.extensions.core.filter.request import FilterLang
 
 # Be careful: https://github.com/samuelcolvin/pydantic/issues/1423#issuecomment-642797287
 NumType = Union[float, int]

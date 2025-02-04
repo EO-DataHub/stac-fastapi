@@ -9,7 +9,7 @@ from stac_pydantic.shared import BBox
 
 from stac_fastapi.types.rfc3339 import DateTimeType, str_to_interval
 from stac_fastapi.types.search import APIRequest, Limit, str2bbox, str2list
-from stac_fastapi.types.search.filter import FilterLang
+from stac_fastapi.extensions.core.filter.request import FilterLang
 
 
 @attr.s
