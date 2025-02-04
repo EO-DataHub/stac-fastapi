@@ -22,11 +22,6 @@ class CollectionSearchExtensionGetRequest(APIRequest):
     filter: Optional[str] = attr.ib(default=None)
     filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
 
-    @property
-    def filter_lang(self) -> Optional[str]:
-        from stac_fastapi.extensions.core.filter.request import FilterLang
-        return Field(alias="filter-lang", default="cql2-text")
-
 @attr.s
 class CollectionSearchExtensionGetRequestExt(CollectionSearchExtensionGetRequest):
     """Collection Search extension GET request model."""
