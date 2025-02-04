@@ -9,7 +9,6 @@ from stac_pydantic.shared import BBox
 
 from stac_fastapi.types.rfc3339 import DateTimeType, str_to_interval
 from stac_fastapi.types.search import APIRequest, Limit, str2bbox, str2list
-from stac_fastapi.extensions.core.filter.request import FilterLang
 
 
 @attr.s
@@ -22,8 +21,11 @@ class CollectionSearchExtensionGetRequest(APIRequest):
     q: Optional[List[str]] = attr.ib(default=None, converter=str2list)
     filter: Optional[str] = attr.ib(default=None)
     filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
-    filter_lang: Optional[FilterLang] = Field(alias="filter-lang", default="cql2-text")
 
+    @property
+    def filter_lang(self) -> Optional[str]:
+        from stac_fastapi.extensions.core.filter.request import FilterLang
+        return Field(alias="filter-lang", default="cql2-text")
 
 @attr.s
 class CollectionSearchExtensionGetRequestExt(CollectionSearchExtensionGetRequest):

@@ -30,7 +30,6 @@ from stac_pydantic.shared import BBox
 from stac_pydantic.utils import AutoValueEnum
 
 from stac_fastapi.types.rfc3339 import DateTimeType, str_to_interval
-from stac_fastapi.extensions.core.filter.request import FilterLang
 
 # Be careful: https://github.com/samuelcolvin/pydantic/issues/1423#issuecomment-642797287
 NumType = Union[float, int]
@@ -357,7 +356,11 @@ class BaseCollectionSearchGetRequest(APIRequest):
     q: Optional[List[str]] = attr.ib(default=None, converter=str2list)
     filter: Optional[str] = attr.ib(default=None)
     filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
-    filter_lang: Optional[FilterLang] = Field(alias="filter-lang", default="cql2-text")
+    
+    @property
+    def filter_lang(self) -> Optional[str]:
+        from stac_fastapi.extensions.core.filter.request import FilterLang
+        return Field(alias="filter-lang", default="cql2-text")
 
 
 @attr.s
@@ -383,7 +386,11 @@ class BaseCollectionSearchPostRequest(Search):
     q: Optional[List[str]]
     filter: Optional[str] = attr.ib(default=None)
     filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
-    filter_lang: Optional[FilterLang] = Field(alias="filter-lang", default="cql2-text")
+    
+    @property
+    def filter_lang(self) -> Optional[str]:
+        from stac_fastapi.extensions.core.filter.request import FilterLang
+        return Field(alias="filter-lang", default="cql2-text")
 
     @validator("bbox", pre=True)
     def validate_bbox(cls, v: Union[str, BBox]) -> BBox:
