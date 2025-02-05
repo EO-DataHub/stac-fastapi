@@ -19,8 +19,7 @@ class CollectionSearchExtensionGetRequest(APIRequest):
     datetime: Optional[DateTimeType] = attr.ib(default=None, converter=str_to_interval)
     limit: Optional[int] = attr.ib(default=10)
     q: Optional[List[str]] = attr.ib(default=None, converter=str2list)
-    filter: Optional[str] = attr.ib(default=None)
-    filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
+
 
 @attr.s
 class CollectionSearchExtensionGetRequestExt(CollectionSearchExtensionGetRequest):
@@ -40,8 +39,6 @@ class CollectionSearchExtensionPostRequest(BaseModel):
     datetime: Optional[DateTimeType]
     limit: Optional[Limit] = Field(default=10)
     q: Optional[List[str]]
-    filter: Optional[str] = attr.ib(default=None)
-    filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
 
 
 class CollectionSearchExtensionPostRequestExt(CollectionSearchExtensionPostRequest):

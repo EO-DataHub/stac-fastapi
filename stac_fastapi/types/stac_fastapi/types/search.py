@@ -354,8 +354,6 @@ class BaseCollectionSearchGetRequest(APIRequest):
     datetime: Optional[DateTimeType] = attr.ib(default=None, converter=str_to_interval)
     limit: Optional[int] = attr.ib(default=10)
     q: Optional[List[str]] = attr.ib(default=None, converter=str2list)
-    filter: Optional[str] = attr.ib(default=None)
-    filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
 
 
 @attr.s
@@ -379,13 +377,6 @@ class BaseCollectionSearchPostRequest(Search):
     datetime: Optional[DateTimeType]
     limit: Optional[Limit] = 10
     q: Optional[List[str]]
-    filter: Optional[str] = attr.ib(default=None)
-    filter_crs: Optional[str] = Field(alias="filter-crs", default=None)
-    
-    @property
-    def filter_lang(self) -> Optional[str]:
-        from stac_fastapi.extensions.core.filter.request import FilterLang
-        return Field(alias="filter-lang", default="cql2-text")
 
     @validator("bbox", pre=True)
     def validate_bbox(cls, v: Union[str, BBox]) -> BBox:
