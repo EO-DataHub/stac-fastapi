@@ -355,7 +355,6 @@ class BaseCollectionSearchGetRequest(APIRequest):
     limit: Optional[int] = attr.ib(default=10)
     q: Optional[List[str]] = attr.ib(default=None, converter=str2list)
     filter: Optional[str] = attr.ib(default=None)
-    # filter_crs: Optional[str] = attr.ib(default=None, alias="filter_crs")
 
 
 @attr.s
