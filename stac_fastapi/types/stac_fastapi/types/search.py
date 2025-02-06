@@ -354,6 +354,7 @@ class BaseCollectionSearchGetRequest(APIRequest):
     datetime: Optional[DateTimeType] = attr.ib(default=None, converter=str_to_interval)
     limit: Optional[int] = attr.ib(default=10)
     q: Optional[List[str]] = attr.ib(default=None, converter=str2list)
+    filter: Optional[str] = attr.ib(default=None)
 
 
 @attr.s
@@ -377,6 +378,7 @@ class BaseCollectionSearchPostRequest(Search):
     datetime: Optional[DateTimeType]
     limit: Optional[Limit] = 10
     q: Optional[List[str]]
+    filter: Optional[Union[str, Dict[str, Any]]]
 
     @validator("bbox", pre=True)
     def validate_bbox(cls, v: Union[str, BBox]) -> BBox:
