@@ -379,8 +379,7 @@ class BaseCollectionSearchPostRequest(Search):
     datetime: Optional[DateTimeType]
     limit: Optional[Limit] = 10
     q: Optional[List[str]]
-    filter: Optional[str]
-    # filter_crs: Optional[str]
+    filter: Optional[Union[str, Dict[str, Any]]]
 
     @validator("bbox", pre=True)
     def validate_bbox(cls, v: Union[str, BBox]) -> BBox:
